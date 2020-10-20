@@ -1,9 +1,10 @@
 export default {
   pages: [
-    'pages/index/index',
-    'pages/classify/index',
-    'pages/buy/index',
-    'pages/userCenter/index',
+    'pages/index/index',// 首页
+    'pages/classify/index',// 分类
+    'pages/buy/index',// 购物车
+    'pages/userCenter/index',// 个人中心
+    'pages/subModel/index'
   ],
   window: {
     backgroundTextStyle: 'light',
@@ -36,7 +37,7 @@ export default {
       },
       {
         pagePath: 'pages/userCenter/index',
-        text: '个人中心',
+        text: '我的',
         iconPath: 'images/icon/user.png',
         selectedIconPath: 'images/icon/userActive.png'
       },

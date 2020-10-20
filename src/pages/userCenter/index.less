@@ -1,4 +1,51 @@
-.index {
-  flex-direction: column;
-  width: 100%;
+.userCenter{
+  .userTop{
+    padding: 40px 25px 0 25px;
+    background-color: rgb(254,235,218);
+    .userInfo{
+      display: flex;
+      margin:0 30px 20px 0;
+      align-items: center;
+      .userName{
+        flex: 1;
+        margin: 0 15px 0 30px;
+        font-size: 32px;
+        font-weight: bold;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+    .membersView{
+      padding: 50px 30px 30px;
+      font-size: 26px;
+      color: rgb(221, 147, 9);
+      border-radius: 15px 15px 0 0;
+      background-color: rgb(0,0,0,.8);
+      .membersHeader{
+        display: block;
+        margin-bottom: 30px;
+        font-size:30px;
+        font-weight: bold;
+      }
+      .membersItem{
+        display: flex;
+        margin-bottom: 20px;
+        align-items: center;
+        justify-content: flex-start;
+        .firstItem{
+          width: 180rpx;
+        }
+        .centerItem{
+          flex: 1;
+        }
+        .openBtn{
+          padding: 10px 20px;
+          border-radius: 20px;
+          color: #222;
+          background-color: rgb(221, 147, 9);
+        }
+      }
+    }
+  }
 }

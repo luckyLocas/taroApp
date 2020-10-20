@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { View, Swiper, SwiperItem, Image, Text } from '@tarojs/components'
-import { AtSearchBar, AtGrid } from 'taro-ui'
+import { AtSearchBar, AtGrid } from 'taro-ui';
+import Taro from '@tarojs/taro'
 
 import { add, minus, asyncAdd } from '../../actions/counter'
 import banner from '../../images/banner.png'
@@ -32,6 +33,14 @@ class Index extends Component {
   componentDidShow() { }
 
   componentDidHide() { }
+
+  // 页面跳转
+  gridLink = (item, index) => {
+    console.log('item, index', item, index);
+    Taro.navigateTo({
+      url: '/pages/subModel/index'
+    })
+  }
 
   render() {
     const gridList = [
@@ -92,7 +101,7 @@ class Index extends Component {
             <View className='swiperItem'>3</View>
           </SwiperItem>
         </Swiper>
-        <AtGrid className='gridItem' data={gridList} hasBorder={false} columnNum={4} />
+        <AtGrid className='gridItem' onClick={this.gridLink} data={gridList} hasBorder={false} columnNum={4} />
         <Image src={linkImg} className='linkImg' />
       </View>
     )

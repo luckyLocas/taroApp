@@ -3,12 +3,68 @@
   width: 100%;
   .tabsBox{
     height: 100%;
-    background-color: red;
     .tabView{
       height: 100%;
-      padding: 100px 50px;
+      padding: 10px 20px;
+      overflow-y: auto;
       text-align: center;
-      background-color: #FAFBFC;
+      background-color: #fff;
     }
   }
+}
+
+.itemView{
+  display: flex;
+  padding: 30px 10px;
+  align-items: center;
+  border-bottom: 1px solid rgb(245, 245, 245);
+  .itemImg{
+    width: 100px;
+    height: 100px;
+  }
+  .itemRight{
+    text-align: left;
+    flex: 1;
+    margin-left:20px;
+    .itemHeader{
+      display: block;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .extra{
+      color: #888;
+      font-size: 24px;
+    }
+    .itemBottom{
+      display: flex;
+      margin-top: 20px;
+      align-items: center;
+      justify-content: space-between;
+      .money{
+        color: #fea314;
+        font-size: 26px;
+      }
+    }
+  }
+}
+
+.at-tabs--vertical .at-tabs__header{
+  border: none;
+  background-color: #f5f5f5;
+}
+
+.at-tabs__item--active {
+  color: #000;
+  font-weight: bold;
+  font-size: 30px;
+  background-color: #fff;
+}
+
+.at-tabs--vertical .at-tabs__item-underline{
+  right: auto;
+  left: 0;
+  height: 28px;
+  width: 8px;
+  top: 32px;
+  background-color: #fea314;
 }
