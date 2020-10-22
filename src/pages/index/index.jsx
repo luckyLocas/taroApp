@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { View, Swiper, SwiperItem, Image, Text } from '@tarojs/components'
-import { AtSearchBar, AtGrid } from 'taro-ui';
+import { AtSearchBar, AtGrid, AtNavBar } from 'taro-ui';
 import Taro from '@tarojs/taro'
 
 import { add, minus, asyncAdd } from '../../actions/counter'
@@ -79,7 +79,13 @@ class Index extends Component {
     ]
 
     return (
-      <View className='index'>
+      <View className='myContainer index'>
+        {/* <AtNavBar
+          className='customNav'
+          color='#000'
+          fixed
+          title='胖胖果农'
+        /> */}
         <AtSearchBar />
         <Swiper
           className='swiperContainer'

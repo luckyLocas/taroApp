@@ -1,4 +1,67 @@
-.index {
-  flex-direction: column;
-  width: 100%;
+.buy{
+  .noBuyInfo{
+    text-align: center;
+    margin-bottom: 20PX;
+    .buyImgIco{
+      width: 160PX;
+      height: 160PX;
+    }
+    .boldTxt{
+      margin-bottom: 10PX;
+      font-size: 15PX;
+      font-weight: bold;
+    }
+    .extraTxt{
+      margin-bottom: 20PX;
+      font-size: 13PX;
+      color: #888;
+    }
+    .goBtn{
+      display: inline-block;
+      width: 100PX;
+      color: #FFF;
+      border: none;
+      background-color: #fea314;
+    }
+  }
+  .recommendBox{
+    padding: 10PX;
+    background-color: rgb(240,246,246);
+    .likeTxt{
+      margin: 5PX 0 10PX;
+      font-size: 16PX;
+      font-weight: bold;
+      text-align: center;
+    }
+    .recommendList{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      .recommendItem{
+        width: 50%;
+        padding:5PX;
+        box-sizing: border-box;
+        .innnerItem{
+          padding-bottom: 12PX;
+          border-radius: 6PX;
+          text-align: center;
+          background-color: #fff;
+          .itemImgBox{
+            padding: 20PX 0;
+            text-align: center;
+            .buyImgIco{
+              width: 140PX;
+              height: 140PX;
+              border-radius: 50%;
+              box-shadow: 0PX 0PX 20PX 4PX #fafafa;
+            }
+          }
+          .itemName{
+            font-size: 15PX;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
 }

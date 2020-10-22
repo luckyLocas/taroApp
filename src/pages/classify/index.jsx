@@ -30,7 +30,6 @@ class Classify extends Component {
       tabHeight: this.getWindowHeight(),
     }
 
-    console.log(this.getWindowHeight())
   }
   handleClick(value) {
     this.setState({

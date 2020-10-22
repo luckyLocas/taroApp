@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { View, Text } from '@tarojs/components'
-import { AtAvatar, AtBadge, AtIcon, AtList, AtListItem } from 'taro-ui'
+import Taro, { getCurrentInstance } from '@tarojs/taro'
+import { View, Text, } from '@tarojs/components'
+import {
+  AtAvatar, AtBadge, AtIcon,
+  AtList, AtListItem, AtButton,
+  AtModal, AtModalHeader, AtModalContent, AtModalAction
+} from 'taro-ui'
 
 import { add, minus, asyncAdd } from '../../actions/counter'
 
@@ -22,23 +27,90 @@ import './index.less'
   }
 }))
 class Usercenter extends Component {
+  constructor() {
+    super(...arguments)
+    this.state = {
+      modalOpen: false,
+      userInfo: null
+    }
+  }
+
+  componentWillMount() {
+    // this.gotologin();
+  }
+
   componentWillReceiveProps(nextProps) {
     console.log(this.props, nextProps)
   }
 
   componentWillUnmount() { }
 
-  componentDidShow() { }
+  componentDidShow() {
+    this.checkUserInfo()
+  }
+
+  checkUserInfo = () => {
+    const that = this;
+    Taro.getStorage({
+      key: "userinfo"
+    }).then(res => {
+      that.setState({
+        modalOpen: false
+      })
+    }).catch(error => {
+      that.setState({
+        modalOpen: true
+      })
+    })
+  }
 
   componentDidHide() { }
 
+  tobegin = (res) => {
+    console.log('res', res)
+    // 保存用户信息微信登录
+    Taro.setStorage({
+      key: "userinfo",
+      data: res.detail.userInfo
+    });
+    this.setState({
+      modalOpen: false,
+      userInfo: res.detail.userInfo
+    })
+  }
+
+
   render() {
+    const { modalOpen, userInfo } = this.state;
     return (
       <View className='userCenter'>
+        <AtModal isOpened={modalOpen}>
+          <AtModalHeader>登录提示</AtModalHeader>
+          <AtModalContent className='modalContent'>
+            请您先授权登录
+          </AtModalContent>
+          <AtModalAction>
+            <AtButton size='small' full onClick={() => {
+              this.setState({
+                modalOpen: false
+              })
+            }}>取消</AtButton>
+            <AtButton
+              className='loginButto'
+              type="primary"
+              size='small'
+              full
+              openType="getUserInfo"
+              onGetUserInfo={this.tobegin}
+            >
+              确定
+          </AtButton>
+          </AtModalAction>
+        </AtModal>
         <View className='userTop'>
           <View className='userInfo'>
-            <AtAvatar circle image='http://storage.360buyimg.com/mtd/home/32443566_635798770100444_2113947400891531264_n1533825816008.jpg' size='large'></AtAvatar>
-            <Text className='userName'>只要开始,虽晚不迟</Text>
+            <AtAvatar circle image={userInfo ? userInfo.avatarUrl : 'http://storage.360buyimg.com/mtd/home/32443566_635798770100444_2113947400891531264_n1533825816008.jpg'} size='large'></AtAvatar>
+            <Text className='userName'>{userInfo ? userInfo.nickName : '只要开始,虽晚不迟'}</Text>
             <AtBadge dot>
               <AtIcon value='message' size='26' color='#888'></AtIcon>
             </AtBadge>
